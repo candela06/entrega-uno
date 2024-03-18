@@ -21,9 +21,14 @@ for i in range(max_attempts):
      # Pedir al jugador que ingrese una letra
      letter = input("Ingresa una letra: ").lower()
      # Verificar si la letra ya ha sido adivinada
-     if letter in guessed_letters:
-         print("Ya has intentado con esa letra. Intenta con otra.")
-         continue
+     if letter == '':
+        print('No has ingresado ninguna letra')   
+        continue
+     else:
+        if letter in guessed_letters:
+            print("Ya has intentado con esa letra. Intenta con otra.")
+            continue
+    
      # Agregar la letra a la lista de letras adivinadas
      guessed_letters.append(letter)
      # Verificar si la letra está en la palabra secreta
