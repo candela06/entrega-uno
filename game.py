@@ -55,9 +55,17 @@ while fault < max_fault:
      else:
          print("Lo siento, la letra no está en la palabra.")
          fault+=1
+     
      # Mostrar la palabra parcialmente adivinada
-     word_displayed = "".join([letter if letter in guessed_letters else "_" for letter in secret_word])
-     print(f"Palabra: {word_displayed}")
+     '''
+     "facil": lambda word: "".join([letter if letter in "aeiou" else "_" for letter in word]),
+    "medio": lambda word: word[0] + "_" * (len(word) - 2) + word[-1],
+    "dificil": lambda word: "_" * len(word)
+    }
+     '''
+     if level == 'facil':
+         word_displayed = "".join([letter if letter in (guessed_letters and 'aeiou') else "_" for letter in secret_word])
+         print(f"Palabra: {word_displayed}")
 
      # Verificar si se ha adivinado la palabra completa
      if word_displayed == secret_word:
