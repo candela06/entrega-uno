@@ -1,6 +1,6 @@
 import random
-# Lista de palabras posibles
-words = ["python", "programación", "computadora", "código", "desarrollo",
+# Lista de palabras posibles SIN TILDES
+words = ["python", "programacion", "computadora", "codigo", "desarrollo",
 "inteligencia"]
 
 # Elegir una palabra al azar
@@ -11,6 +11,8 @@ guessed_letters = []
 #numero de fallos
 max_fault = 5
 fault = 0
+
+#niveles de dificultad
 levels = {
     "facil":"".join([letter if letter in "aeiou" else "_" for letter in secret_word]),
     "medio": secret_word[0] + "_" * (len(secret_word) - 2) + secret_word[-1],
@@ -55,19 +57,15 @@ while fault < max_fault:
      else:
          print("Lo siento, la letra no está en la palabra.")
          fault+=1
-     # Mostrar la palabra parcialmente adivinada
-     '''
-    "facil":"".join([letter if letter in "aeiou" else "_" for letter in secret_word]),
-    "medio": secret_word[0] + "_" * (len(secret_word) - 2) + secret_word[-1],
-    "dificil": "_" * len(secret_word)
 
-     word_displayed = "".join([letter if letter in guessed_letters else "_" for letter in secret_word])
-     print(f"Palabra: {word_displayed}")
-'''
+     # Mostrar la palabra parcialmente adivinada
+    #con nivel facil
      if level == 'facil':
          word_displayed = "".join([letter if letter in 'aeiou' or letter in guessed_letters  else "_" for letter in secret_word])
+    #con nivel medio
      elif level == 'medio':
         word_displayed = secret_word[0] + ''.join(letter if letter in guessed_letters else '_' for letter in secret_word[1:-1]) + secret_word[-1]
+    #con nivel dificil
      else:
          word_displayed = "".join([letter if letter in guessed_letters else "_" for letter in secret_word])
 
