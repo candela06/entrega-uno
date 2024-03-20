@@ -66,17 +66,20 @@ while fault < max_fault:
 '''
      if level == 'facil':
          word_displayed = "".join([letter if letter in 'aeiou' or letter in guessed_letters  else "_" for letter in secret_word])
-         print(f"Palabra: {word_displayed}")
-
-     if level == 'medio':
-         '''word_displayed = "".join([letter if letter == secret_word[0] or letter == secret_word[-1] or letter in guessed_letters else "_" for letter in secret_word])'''
          
-
-         print(f"Palabra: {word_displayed}")
+     if level == 'medio':
+        word_displayed = secret_word[0]
+        for letter in secret_word[1:-1]:
+            if letter in guessed_letters:
+                word_displayed+=letter
+            else:
+                word_displayed+='_'
+        word_displayed += secret_word[-1]
 
      if level == 'dificil':
          word_displayed = "".join([letter if letter in 'aeiou' or letter in guessed_letters  else "_" for letter in secret_word])
-         print(f"Palabra: {word_displayed}")
+
+     print(f"Palabra: {word_displayed}")
      # Verificar si se ha adivinado la palabra completa
      if word_displayed == secret_word:
          print(f"¡Felicidades! Has adivinado la palabra secreta:  {secret_word}")
