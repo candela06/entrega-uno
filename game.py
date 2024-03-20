@@ -66,11 +66,9 @@ while fault < max_fault:
 '''
      if level == 'facil':
          word_displayed = "".join([letter if letter in 'aeiou' or letter in guessed_letters  else "_" for letter in secret_word])
-
-     if level == 'medio':
+     elif level == 'medio':
         word_displayed = secret_word[0] + ''.join(letter if letter in guessed_letters else '_' for letter in secret_word[1:-1]) + secret_word[-1]
-
-     if level == 'dificil':
+     else:
          word_displayed = "".join([letter if letter in guessed_letters else "_" for letter in secret_word])
 
      print(f"Palabra: {word_displayed}")
