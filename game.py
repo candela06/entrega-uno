@@ -69,7 +69,9 @@ while fault < max_fault:
          print(f"Palabra: {word_displayed}")
 
      if level == 'medio':
-         word_displayed = "".join([letter if letter == secret_word[0] or letter == secret_word[-1] or letter in guessed_letters else "_" for letter in secret_word])
+         '''word_displayed = "".join([letter if letter == secret_word[0] or letter == secret_word[-1] or letter in guessed_letters else "_" for letter in secret_word])'''
+         
+
          print(f"Palabra: {word_displayed}")
 
      if level == 'dificil':
