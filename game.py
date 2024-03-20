@@ -12,9 +12,9 @@ guessed_letters = []
 max_fault = 5
 fault = 0
 levels = {
-    "facil": lambda word: "".join([letter if letter in "aeiou" else "_" for letter in word]),
-    "medio": lambda word: word[0] + "_" * (len(word) - 2) + word[-1],
-    "dificil": lambda word: "_" * len(word)
+    "facil":"".join([letter if letter in "aeiou" else "_" for letter in secret_word]),
+    "medio": secret_word[0] + "_" * (len(secret_word) - 2) + secret_word[-1],
+    "dificil": "_" * len(secret_word)
     }
 
 print("¡Bienvenido al juego de adivinanzas!")
@@ -30,7 +30,7 @@ while True:
 
 print("Estoy pensando en una palabra. ¿Puedes adivinar cuál es?")
 
-word_displayed = levels[level](secret_word)
+word_displayed = levels[level]
 # Mostrarla palabra parcialmente adivinada
 print(f"Palabra: {word_displayed}")
 
@@ -55,18 +55,17 @@ while fault < max_fault:
      else:
          print("Lo siento, la letra no está en la palabra.")
          fault+=1
-     
      # Mostrar la palabra parcialmente adivinada
      '''
-     "facil": lambda word: "".join([letter if letter in "aeiou" else "_" for letter in word]),
-    "medio": lambda word: word[0] + "_" * (len(word) - 2) + word[-1],
-    "dificil": lambda word: "_" * len(word)
-    }
-     '''
+    "facil":"".join([letter if letter in "aeiou" else "_" for letter in secret_word]),
+    "medio": secret_word[0] + "_" * (len(secret_word) - 2) + secret_word[-1],
+    "dificil": "_" * len(secret_word)
+'''
      if level == 'facil':
-         word_displayed = "".join([letter if letter in (guessed_letters and 'aeiou') else "_" for letter in secret_word])
+         word_displayed = "".join([letter if letter in 'aeiou' or letter in guessed_letters  else "_" for letter in secret_word])
          print(f"Palabra: {word_displayed}")
 
+     
      # Verificar si se ha adivinado la palabra completa
      if word_displayed == secret_word:
          print(f"¡Felicidades! Has adivinado la palabra secreta:  {secret_word}")
